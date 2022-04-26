@@ -27,9 +27,22 @@ const Hero = () => {
   let item = useRef(null)
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: {ease: 'power4.inOut' }})
+    const tl = gsap.timeline({ defaults: {ease: 'power4.inOut' }, onComplete: () => {
+      setHeroId(() => heroId === heroSlider.length - 1 ? 0 : heroId + 1)
+    }})
 
     tl
+    .to(progress, {
+      scaleY: '0%',
+      duration: 0,
+      ease: 'power0.ease'
+    })
+    .to([title, item], {
+      delay: 0.5,
+      opacity: 1,
+      y: 0,
+      duration: 1,
+    })
     .to(progress, {
       scaleY: '100%',
       duration: 7,
@@ -39,23 +52,12 @@ const Hero = () => {
       opacity: 0,
       y: -100,
       duration: 1,
-      onComplete: () => {
-        setHeroId(() => heroId > heroSlider.length - 1 ? 0 : heroId + 1)
-      }
     })
-    .to([title, item], {
-      delay: 0.5,
-      opacity: 1,
-      y: 0,
-      duration: 1,
-    })
-    .to(progress, {
-      scaleY: '0%',
-      duration: 0,
-      ease: 'power0.ease'
-    })
-    .repeat(-1);
-  }, [])
+
+    return () => {
+      tl.kill()
+    }
+  }, [heroId])
 
   return (
     <div className={styles.container}>
