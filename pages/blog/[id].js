@@ -17,8 +17,6 @@ export async function getStaticProps ({params}) {
     return res.json()
   })
 
-  console.log(post)
-
   return {
     props: {
       post

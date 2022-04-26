@@ -4,6 +4,7 @@
   position: relative;
 }
 
+
 .hero__background__images {
   width: 100vw;
   height: 100vh;
@@ -65,7 +66,7 @@
 }
 .info__item__title {
   position: static;
-  width: 56px;
+  // width: 56px;
   height: 16px;
   left: 330px;
   top: 0px;
@@ -131,10 +132,6 @@
   border: 2px solid #FFFFFF;
 }
 
-@media (max-width: 1440px) {
-
-}
-
 @media (max-width: 1024px) {  
   .hero__title {
     font-size: 96px;
@@ -188,7 +185,7 @@
 
   .info__progress__bar {
     right: 5%;
-    top: 62.74%;
+    top: 44.74%;
     // left: 5%;
     width: 40%;
   }
